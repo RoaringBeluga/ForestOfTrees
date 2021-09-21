@@ -1,4 +1,5 @@
 from forest.questacks.queue import Queue
+from forest.questacks.stack import Stack
 from forest.trees.BinaryTree import Node
 
 if __name__ == '__main__':
@@ -20,8 +21,27 @@ if __name__ == '__main__':
     print('Level traversal')
     root.traverse_level()
 
+    print('\nQueue manipulations')
     q = Queue()
     q.push_list([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A'])
     print(f'Our Q is: {q.as_list()}')
     for i in q:
         print(f'Another element: {i}')
+
+    print('Stack manipulations')
+    s = Stack(12)
+    s.push(0)
+    s.push_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 'A'])
+    print(f'Our S is: {s.as_list()}')
+    try:
+        s.push('B')
+        print(f'Our S is: {s.as_list()}')
+        s.push('C')
+    except IndexError as e:
+        print(f'Index error raised: {e}')
+        print(f'Our S is: {s.as_list()}')
+
+    for i in s:
+        print(f'Popped: {i}\tLeft: {s.as_list()}')
+
+    print(f'Popping once more: {s.pop()}')
